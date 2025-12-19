@@ -440,9 +440,8 @@ public class EventSystem {
         }
     }
 
-    // Helper method to overwrite the events.txt file with current data
-    public void updateEventsFile() throws IOException {
-        File file = new File("src/OOP/events.txt");
+    public static void updateEventsFile() throws IOException {
+        File file = new File("src/EventDriven/database/events.txt");
         FileWriter fw = new FileWriter(file, false);
 
         fw.write("Name : Year/Month/Day : Venue : Capacity : Length : Participants \n");

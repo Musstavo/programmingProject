@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 public class EventsGUI extends Form {
+    private JLabel nameValueLabel, dateValueLabel, venueValueLabel, lengthValueLabel, participantValueLabel, FULL;
 
     public EventsGUI() {
         super("Events");
@@ -54,9 +55,10 @@ public class EventsGUI extends Form {
         add(combo);
 
         DefaultListModel<Event> model = new DefaultListModel<>();
-        model.addElement(new Event("Test", 2026, 1, 10, "HEHE", 120, 3, 78));
-        model.addElement(new Event("Solar Workshop", 2026, 1, 10, "HTU", 120, 3, 120));
-        model.addElement(new Event("Smth else", 2026, 1, 10, "HTU", 120, 3, 78));
+        model.clear();
+        for (Event event : EventSystem.events) {
+            model.addElement(event);
+        }
         JList<Event> eventList = new JList<>();
         eventList.setModel(model);
         JScrollPane scroll = new JScrollPane(eventList);
@@ -81,22 +83,22 @@ public class EventsGUI extends Form {
         details.setLayout(null);
         add(details);
 
-        JLabel nameValueLabel = new JLabel("");
+        nameValueLabel = new JLabel("");
         nameValueLabel.setBounds(10, 10, 400, 30);
 
-        JLabel dateValueLabel = new JLabel("");
+        dateValueLabel = new JLabel("");
         dateValueLabel.setBounds(10, 40, 400, 30);
 
-        JLabel venueValueLabel = new JLabel("");
+        venueValueLabel = new JLabel("");
         venueValueLabel.setBounds(10, 70, 400, 30);
 
-        JLabel lengthValueLabel = new JLabel("");
+        lengthValueLabel = new JLabel("");
         lengthValueLabel.setBounds(10, 100, 400, 30);
 
-        JLabel participantValueLabel = new JLabel("");
+        participantValueLabel = new JLabel("");
         participantValueLabel.setBounds(10, 130, 400, 30);
 
-        JLabel FULL = new JLabel("");
+        FULL = new JLabel("");
         FULL.setBounds(90, 20, 480, 120);
 
         details.add(nameValueLabel);
@@ -143,6 +145,7 @@ public class EventsGUI extends Form {
 
                 Event selected = eventList.getSelectedValue();
                 String nameOfEvent = selected.getEvent_name();
+
                 for (UserEventRegistration userEventRegistration : EventSystem.user_event) {
                     if (userEventRegistration.getUserIndex() == EventSystem.currentUser && userEventRegistration.getEventName().equals(nameOfEvent)) {
                         alreadyRegistered.setVisible(true);
@@ -151,8 +154,16 @@ public class EventsGUI extends Form {
                 }
                 alreadyRegistered.setVisible(false);
                 successfulRegister.setVisible(true);
+
                 selected.setParticipants(selected.getParticipants() + 1);
                 model.setElementAt(selected, eventList.getSelectedIndex());
+                updateDetails(selected);
+
+                try {
+                    EventSystem.updateEventsFile();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
 
                 UserEventRegistration newUserEventRegistration = new UserEventRegistration(EventSystem.currentUser, selected.getEvent_name());
 
@@ -177,6 +188,13 @@ public class EventsGUI extends Form {
         eventList.addListSelectionListener(e -> {
 
             Event selected = eventList.getSelectedValue();
+            updateDetails(selected);
+            try {
+                EventSystem.updateEventsFile();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
             if (selected.getCapacity() == selected.getParticipants()) {
                 registerEvent.setVisible(false);
                 nameValueLabel.setVisible(false);
@@ -226,4 +244,13 @@ public class EventsGUI extends Form {
         });
 
     }
+
+    public void updateDetails(Event selected) {
+        nameValueLabel.setText("Name: " + selected.getEvent_name());
+        dateValueLabel.setText("Date: " + selected.getYear() + "-" + selected.getMonth() + "-" + selected.getDay());
+        venueValueLabel.setText("Venue: " + selected.getVenue());
+        lengthValueLabel.setText("Length: " + selected.getLength());
+        participantValueLabel.setText("Participants: " + selected.getParticipants() + "/" + selected.getCapacity());
+    }
+
 }
