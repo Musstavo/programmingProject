@@ -1,6 +1,7 @@
 package EventDriven;
 
 import EventDriven.OOP.EventSystem;
+import EventDriven.guis.AddEvent;
 import EventDriven.guis.EventsGUI;
 import EventDriven.guis.LoginGUI;
 
@@ -15,7 +16,7 @@ public class Main {
 //        LoginGUI loginGUI = new LoginGUI();
 //        loginGUI.setVisible(true);
 
-        EventsGUI eventsGUI = new EventsGUI();
+        AddEvent eventsGUI = new AddEvent();
         eventsGUI.setVisible(true);
     }
 }

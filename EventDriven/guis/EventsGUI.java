@@ -165,6 +165,14 @@ public class EventsGUI extends Form {
             }
 
         });
+        addEvent.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                EventsGUI.this.dispose();
+                AddEvent addEvent = new AddEvent();
+                addEvent.setVisible(true);
+            }
+        });
 
         eventList.addListSelectionListener(e -> {
 
