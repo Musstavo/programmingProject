@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EventSystem {
-    private static ArrayList<User> users = new ArrayList<>();
-    private static ArrayList<Event> events = new ArrayList<>();
-    private static ArrayList<UserEventRegistration> user_event = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
-    private String choice;
-    private int currentUser;
+    public static ArrayList<User> users = new ArrayList<>();
+    public static ArrayList<Event> events = new ArrayList<>();
+    public static ArrayList<UserEventRegistration> user_event = new ArrayList<>();
+    public Scanner scanner = new Scanner(System.in);
+    public String choice;
+    public static int currentUser;
 
 
     public void menu() {
@@ -93,7 +93,7 @@ public class EventSystem {
         }
     }
 
-    public void appendToFile(String path, String header, FileRecord record) throws IOException {
+    public static void appendToFile(String path, String header, FileRecord record) throws IOException {
         File file = new File(path);
         FileWriter fw = new FileWriter(file, true);
 
@@ -104,22 +104,22 @@ public class EventSystem {
         fw.close();
     }
 
-    public void writeToFile(User user) throws IOException {
-        appendToFile("src/OOP/users.txt", "username:password", user);
+    public static void writeToFile(User user) throws IOException {
+        appendToFile("src/EventDriven/database/users.txt", "username:password", user);
     }
 
-    public void writeToFile(Event event) throws IOException {
-        appendToFile("src/OOP/events.txt", "Name : Year/Month/Day : Venue : Capacity : Length : Participants",
-                event);
+    public static void writeToFile(Event event) throws IOException {
+        appendToFile("src/EventDriven/database/events.txt", "Name : Year/Month/Day : Venue : Capacity : Length : " +
+                "Participants", event);
 
     }
 
-    public void writeToFile(UserEventRegistration userEventRegistration) throws IOException {
-        appendToFile("src/OOP/registration.txt", "userIndex,eventIndex", userEventRegistration);
+    public static void writeToFile(UserEventRegistration userEventRegistration) throws IOException {
+        appendToFile("src/EventDriven/database/registration.txt", "userIndex,eventName", userEventRegistration);
     }
 
-    public void loadUserFromFile() throws FileNotFoundException {
-        File file = new File("src/OOP/users.txt");
+    public static void loadUserFromFile() throws FileNotFoundException {
+        File file = new File("src/EventDriven/database/users.txt");
         if (file.exists()) {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
@@ -132,8 +132,8 @@ public class EventSystem {
         }
     }
 
-    public void loadEventFromFile() throws FileNotFoundException {
-        File file2 = new File("src/OOP/events.txt");
+    public static void loadEventFromFile() throws FileNotFoundException {
+        File file2 = new File("src/EventDriven/database/events.txt");
         if (file2.exists()) {
             Scanner scanner = new Scanner(file2);
             while (scanner.hasNextLine()) {
@@ -425,8 +425,8 @@ public class EventSystem {
         }
     }
 
-    public void loadUserEventFromFile() throws FileNotFoundException {
-        File file3 = new File("src/OOP/registration.txt");
+    public static void loadUserEventFromFile() throws FileNotFoundException {
+        File file3 = new File("src/EventDriven/database/registration.txt");
         if (file3.exists()) {
             Scanner scanner = new Scanner(file3);
             while (scanner.hasNextLine()) {

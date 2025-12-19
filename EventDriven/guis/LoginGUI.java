@@ -1,12 +1,11 @@
 package EventDriven.guis;
 
 import EventDriven.constants.CommonConstants;
+import EventDriven.OOP.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 public class LoginGUI extends Form {
     public LoginGUI() {
@@ -52,6 +51,20 @@ public class LoginGUI extends Form {
         add(passwordField);
         add(passwordLabel);
 
+        JLabel emptyUsername = new JLabel("You can't have an empty username.");
+        emptyUsername.setBounds(115, 565, 500, 50);
+        emptyUsername.setForeground(Color.red);
+        emptyUsername.setFont(new Font("Dialog", Font.PLAIN, 18));
+        emptyUsername.setVisible(false);
+        add(emptyUsername);
+
+        JLabel emptyPassword = new JLabel("You can't have an empty password.");
+        emptyPassword.setBounds(115, 565, 500, 50);
+        emptyPassword.setForeground(Color.red);
+        emptyPassword.setFont(new Font("Dialog", Font.PLAIN, 18));
+        emptyPassword.setVisible(false);
+        add(emptyPassword);
+
         JButton loginButton = new JButton("Login");
         loginButton.setFont(new Font("Dialog", Font.BOLD, 18));
         loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -59,7 +72,38 @@ public class LoginGUI extends Form {
         loginButton.setBounds(125, 520, 250, 50);
         add(loginButton);
 
-        JLabel registerLabel = new JLabel("New user? Create new account here");
+
+        loginButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                emptyUsername.setVisible(false);
+                emptyPassword.setVisible(false);
+                String username = usernameField.getText();
+                String password = passwordField.getText();
+
+                if (username.isEmpty()) {
+                    emptyUsername.setVisible(true);
+                    return;
+                }
+                if (password.isEmpty()) {
+                    emptyPassword.setVisible(true);
+                    return;
+                }
+                boolean exists = false;
+
+                for (User user : EventSystem.users) {
+                    if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                        EventSystem.currentUser = EventSystem.users.indexOf(user);
+                        LoginGUI.this.dispose();
+                        EventsGUI eventsGUI = new EventsGUI();
+                        eventsGUI.setVisible(true);
+                    }
+                }
+
+            }
+        });
+        JLabel registerLabel = new JLabel();
+        registerLabel.setText("<html><u>New user? Create new account here</u></html>");
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         registerLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         registerLabel.setForeground(CommonConstants.textColor);

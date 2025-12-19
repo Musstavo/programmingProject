@@ -1,12 +1,9 @@
 package EventDriven.guis;
 
-import EventDriven.OOP.User;
 import EventDriven.constants.CommonConstants;
 
-import static EventDriven.database.JavaDatabase.*;
 
 import EventDriven.OOP.*;
-import EventDriven.database.JavaDatabase;
 
 import javax.swing.*;
 import java.awt.*;
@@ -140,7 +137,7 @@ public class RegisterGUI extends Form {
                     return;
                 }
 
-                for (User user : users) {
+                for (User user : EventSystem.users) {
                     if (user.getUsername().equals(username)) {
                         usernameExists.setVisible(true);
                         return;
@@ -154,11 +151,11 @@ public class RegisterGUI extends Form {
 
                 User newUser = new User(username, password);
                 try {
-                    JavaDatabase.writeToFile(newUser);
+                    EventSystem.writeToFile(newUser);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                JavaDatabase.users.add(newUser);
+                EventSystem.users.add(newUser);
                 successfulRegister.setVisible(true);
 
             }
@@ -166,7 +163,8 @@ public class RegisterGUI extends Form {
 
         add(registerButton);
 
-        JLabel loginLabel = new JLabel("Have an account? Login here");
+        JLabel loginLabel = new JLabel();
+        loginLabel.setText("<html><u>Have an account? Login here</u></html>");
         loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
         loginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         loginLabel.setForeground(CommonConstants.textColor);

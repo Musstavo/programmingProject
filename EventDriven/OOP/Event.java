@@ -86,6 +86,10 @@ public class Event extends FileRecord {
         this.length = length;
     }
 
+    public String toString() { // this is an override btw
+        return event_name + "  •  " + year + "-" + month + "-" + day + "  •  " + participants + "/" + capacity;
+    }
+
     public String writeToFile() {
         return event_name + " : " + year + "/" + month + "/" + day + " : " + venue + " : " + capacity +
                 " : " + length + " : " + participants + "\n";
