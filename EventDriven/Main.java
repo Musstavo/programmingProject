@@ -13,10 +13,12 @@ public class Main {
         EventSystem.loadUserFromFile();
         EventSystem.loadUserEventFromFile();
 
-//        LoginGUI loginGUI = new LoginGUI();
-//        loginGUI.setVisible(true);
+        //LoginGUI loginGUI = new LoginGUI();
+        //loginGUI.setVisible(true);
 
-        AddEvent eventsGUI = new AddEvent();
-        eventsGUI.setVisible(true);
+        EventsGUI eventGUI = new EventsGUI();
+        eventGUI.setVisible(true);
+
+
     }
 }

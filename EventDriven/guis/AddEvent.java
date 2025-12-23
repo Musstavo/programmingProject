@@ -226,6 +226,7 @@ public class AddEvent extends Form {
             }
         });
 
+
         codeButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {

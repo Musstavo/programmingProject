@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.Objects;
 
 public class EventsGUI extends Form {
     private JLabel nameValueLabel, dateValueLabel, venueValueLabel, lengthValueLabel, participantValueLabel, FULL;
@@ -43,7 +44,7 @@ public class EventsGUI extends Form {
         eventLabel.setBounds(10, 35, 240, 55);
         add(eventLabel);
 
-        String[] choices = new String[]{"Date ↑", "Date ↓"};
+        String[] choices = new String[]{"Ascending", "Descending"};
         JComboBox<String> combo = new JComboBox<>(choices);
         combo.setBounds(340, 48, 165, 30);
         combo.setSelectedIndex(0);
@@ -54,6 +55,7 @@ public class EventsGUI extends Form {
         combo.setForeground(CommonConstants.textColor);
         add(combo);
 
+
         DefaultListModel<Event> model = new DefaultListModel<>();
         model.clear();
         for (Event event : EventSystem.events) {
@@ -63,7 +65,19 @@ public class EventsGUI extends Form {
         eventList.setModel(model);
         JScrollPane scroll = new JScrollPane(eventList);
         scroll.setBounds(10, 110, 500, 330);
+        combo.addActionListener(new ActionListener() {
 
+            public void actionPerformed(ActionEvent e) {
+                int selected = combo.getSelectedIndex();
+
+                EventSystem.sortEvent(selected == 0);
+                model.clear();
+                for (Event event : EventSystem.events) {
+                    model.addElement(event);
+                }
+
+            }
+        });
         eventList.setForeground(CommonConstants.textColor);
         eventList.setBackground(CommonConstants.primaryColor);
         eventList.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -188,14 +202,15 @@ public class EventsGUI extends Form {
         eventList.addListSelectionListener(e -> {
 
             Event selected = eventList.getSelectedValue();
-            updateDetails(selected);
+            if (selected == null) return; // i keep getting nullpointerexception error, had to research it, and i
+            // found out that when nothing is selected it gives a null value which calls for skipping.
             try {
                 EventSystem.updateEventsFile();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
 
-            if (selected.getCapacity() == selected.getParticipants()) {
+            if (selected.getCapacity() >= selected.getParticipants()) {
                 registerEvent.setVisible(false);
                 nameValueLabel.setVisible(false);
                 dateValueLabel.setVisible(false);
