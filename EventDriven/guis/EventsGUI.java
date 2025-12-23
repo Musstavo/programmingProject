@@ -1,7 +1,7 @@
 package EventDriven.guis;
 
 import EventDriven.OOP.Event;
-import EventDriven.constants.CommonConstants;
+import EventDriven.colors.CommonConstants;
 import EventDriven.OOP.*;
 
 import javax.swing.*;
@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.util.Objects;
 
 public class EventsGUI extends Form {
     private JLabel nameValueLabel, dateValueLabel, venueValueLabel, lengthValueLabel, participantValueLabel, FULL;
@@ -139,16 +138,16 @@ public class EventsGUI extends Form {
         details.add(addEvent);
 
         JLabel successfulRegister = new JLabel("You have successfully registered for the event.");
-        successfulRegister.setBounds(180, 420, 500, 50);
+        successfulRegister.setBounds(80, 423, 500, 50);
         successfulRegister.setForeground(Color.green);
-        successfulRegister.setFont(new Font("Dialog", Font.PLAIN, 18));
+        successfulRegister.setFont(new Font("Dialog", Font.PLAIN, 16));
         successfulRegister.setVisible(false);
         add(successfulRegister);
 
         JLabel alreadyRegistered = new JLabel("You are already regisitered to this event.");
-        alreadyRegistered.setBounds(180, 420, 500, 50);
+        alreadyRegistered.setBounds(85, 423, 500, 50);
         alreadyRegistered.setForeground(Color.red);
-        alreadyRegistered.setFont(new Font("Dialog", Font.PLAIN, 18));
+        alreadyRegistered.setFont(new Font("Dialog", Font.PLAIN, 16));
         alreadyRegistered.setVisible(false);
         add(alreadyRegistered);
 
@@ -210,7 +209,7 @@ public class EventsGUI extends Form {
                 throw new RuntimeException(ex);
             }
 
-            if (selected.getCapacity() >= selected.getParticipants()) {
+            if (selected.getParticipants() >= selected.getCapacity()) {
                 registerEvent.setVisible(false);
                 nameValueLabel.setVisible(false);
                 dateValueLabel.setVisible(false);

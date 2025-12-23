@@ -1,4 +1,4 @@
-package EventDriven.constants;
+package EventDriven.colors;
 
 import java.awt.*;
 

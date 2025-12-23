@@ -1,6 +1,6 @@
 package EventDriven.guis;
 
-import EventDriven.constants.CommonConstants;
+import EventDriven.colors.CommonConstants;
 
 import javax.swing.*;
 
