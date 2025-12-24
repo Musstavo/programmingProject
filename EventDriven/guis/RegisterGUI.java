@@ -1,6 +1,6 @@
 package EventDriven.guis;
 
-import EventDriven.colors.CommonConstants;
+import EventDriven.colors;
 
 
 import EventDriven.OOP.*;
@@ -23,20 +23,20 @@ public class RegisterGUI extends Form {
     public void GUIitems() {
         JLabel registerLabel = new JLabel("Register");
         registerLabel.setBounds(0, 25, 520, 100);
-        registerLabel.setForeground(CommonConstants.textColor);
+        registerLabel.setForeground(colors.textColor);
         registerLabel.setFont(new Font("Dialog", Font.BOLD, 40));
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(registerLabel);
 
         JLabel usernameLabel = new JLabel("Username: ");
         usernameLabel.setBounds(30, 150, 400, 25);
-        usernameLabel.setForeground(CommonConstants.textColor);
+        usernameLabel.setForeground(colors.textColor);
         usernameLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
         JTextField usernameField = new JTextField();
         usernameField.setBounds(30, 185, 450, 55);
-        usernameField.setForeground(CommonConstants.textColor);
-        usernameField.setBackground(CommonConstants.secondryColor);
+        usernameField.setForeground(colors.textColor);
+        usernameField.setBackground(colors.secondryColor);
         usernameField.setFont(new Font("Dialog", Font.PLAIN, 24));
         usernameField.setMargin(new Insets(5, 5, 5, 5)); // adds margin to the text in the text field
 
@@ -45,13 +45,13 @@ public class RegisterGUI extends Form {
 
         JLabel passwordLabel = new JLabel("Password: ");
         passwordLabel.setBounds(30, 255, 400, 25);
-        passwordLabel.setForeground(CommonConstants.textColor);
+        passwordLabel.setForeground(colors.textColor);
         passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
         JTextField passwordField = new JTextField();
         passwordField.setBounds(30, 290, 450, 55);
-        passwordField.setForeground(CommonConstants.textColor);
-        passwordField.setBackground(CommonConstants.secondryColor);
+        passwordField.setForeground(colors.textColor);
+        passwordField.setBackground(colors.secondryColor);
         passwordField.setFont(new Font("Dialog", Font.PLAIN, 24));
         passwordField.setMargin(new Insets(5, 5, 5, 5));
 
@@ -60,13 +60,13 @@ public class RegisterGUI extends Form {
 
         JLabel rePasswordLabel = new JLabel("Re-enter Password: ");
         rePasswordLabel.setBounds(30, 365, 400, 25);
-        rePasswordLabel.setForeground(CommonConstants.textColor);
+        rePasswordLabel.setForeground(colors.textColor);
         rePasswordLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
         JTextField rePasswordField = new JTextField();
         rePasswordField.setBounds(30, 400, 450, 55);
-        rePasswordField.setForeground(CommonConstants.textColor);
-        rePasswordField.setBackground(CommonConstants.secondryColor);
+        rePasswordField.setForeground(colors.textColor);
+        rePasswordField.setBackground(colors.secondryColor);
         rePasswordField.setFont(new Font("Dialog", Font.PLAIN, 24));
         rePasswordField.setMargin(new Insets(5, 5, 5, 5));
 
@@ -76,7 +76,7 @@ public class RegisterGUI extends Form {
         JButton registerButton = new JButton("Register");
         registerButton.setFont(new Font("Dialog", Font.BOLD, 18));
         registerButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        registerButton.setBackground(CommonConstants.textColor);
+        registerButton.setBackground(colors.textColor);
         registerButton.setBounds(125, 520, 250, 50);
 
 
@@ -167,7 +167,7 @@ public class RegisterGUI extends Form {
         loginLabel.setText("<html><u>Have an account? Login here</u></html>");
         loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
         loginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        loginLabel.setForeground(CommonConstants.textColor);
+        loginLabel.setForeground(colors.textColor);
 
         loginLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {

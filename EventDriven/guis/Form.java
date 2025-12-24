@@ -1,6 +1,6 @@
 package EventDriven.guis;
 
-import EventDriven.colors.CommonConstants;
+import EventDriven.colors;
 
 import javax.swing.*;
 
@@ -14,10 +14,10 @@ public class Form extends JFrame {
 
         setLayout(null);
 
-        setLocationRelativeTo(null); // null here means the center of the screen (thanks google)
+        setLocationRelativeTo(null);
 
         setResizable(false);
 
-        getContentPane().setBackground(CommonConstants.primaryColor);
+        getContentPane().setBackground(colors.primaryColor);
     }
 }
