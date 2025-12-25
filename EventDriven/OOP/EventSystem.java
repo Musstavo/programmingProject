@@ -512,9 +512,6 @@ public class EventSystem {
                     return;
                 }
             }
-            // hsa shoof, the only reason for writing these two lines is to save
-            // the username and event in memory, so when it's still on the same run, it can actually detects the
-            // duplications without having to load the file by going through the second run.. khalas inta fahim
 
             events.get(currentEvent).setParticipants(events.get(currentEvent).getParticipants() + 1);
             updateEventsFile();

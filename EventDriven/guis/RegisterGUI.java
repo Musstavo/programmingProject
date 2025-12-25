@@ -48,7 +48,7 @@ public class RegisterGUI extends Form {
         passwordLabel.setForeground(colors.textColor);
         passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
-        JTextField passwordField = new JTextField();
+        JPasswordField passwordField = new JPasswordField();
         passwordField.setBounds(30, 290, 450, 55);
         passwordField.setForeground(colors.textColor);
         passwordField.setBackground(colors.secondryColor);
@@ -63,7 +63,7 @@ public class RegisterGUI extends Form {
         rePasswordLabel.setForeground(colors.textColor);
         rePasswordLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
-        JTextField rePasswordField = new JTextField();
+        JPasswordField rePasswordField = new JPasswordField();
         rePasswordField.setBounds(30, 400, 450, 55);
         rePasswordField.setForeground(colors.textColor);
         rePasswordField.setBackground(colors.secondryColor);
@@ -125,8 +125,8 @@ public class RegisterGUI extends Form {
                 emptyPassword.setVisible(false);
 
                 String username = usernameField.getText();
-                String password = passwordField.getText();
-                String rePassword = rePasswordField.getText();
+                String password = new String(passwordField.getPassword()); // the ide told me to put new wallahi
+                String rePassword = new String(rePasswordField.getPassword());
 
                 if (username.isEmpty()) {
                     emptyUsername.setVisible(true);
@@ -138,7 +138,7 @@ public class RegisterGUI extends Form {
                 }
 
                 for (User user : EventSystem.users) {
-                    if (user.getUsername().equals(username)) {
+                    if (user.getUsername().equalsIgnoreCase(username)) {
                         usernameExists.setVisible(true);
                         return;
                     }
@@ -150,12 +150,12 @@ public class RegisterGUI extends Form {
                 }
 
                 User newUser = new User(username, password);
+                EventSystem.users.add(newUser);
                 try {
                     EventSystem.writeToFile(newUser);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                EventSystem.users.add(newUser);
                 successfulRegister.setVisible(true);
 
             }

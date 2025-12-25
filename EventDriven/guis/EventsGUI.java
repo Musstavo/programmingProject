@@ -26,7 +26,7 @@ public class EventsGUI extends Form {
         back.setFont(new Font("Dialog", Font.PLAIN, 12));
         back.setBounds(10, 8, 200, 20);
         back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        back.setText("<html><u>Return to Login Page</u></html>"); // to get underline effect
+        back.setText("<html><u>Return to Login Page</u></html>");
         add(back);
 
         back.addMouseListener(new MouseAdapter() {
@@ -43,10 +43,12 @@ public class EventsGUI extends Form {
         eventLabel.setBounds(10, 35, 240, 55);
         add(eventLabel);
 
-        String[] choices = new String[]{"Ascending", "Descending"};
-        JComboBox<String> combo = new JComboBox<>(choices);
+        JComboBox<String> combo = new JComboBox<>();
+        combo.addItem("Newest First");
+        combo.addItem("Oldest First");
+
         combo.setBounds(340, 48, 165, 30);
-        combo.setSelectedIndex(0);
+        combo.setSelectedIndex(1);
         combo.setFocusable(false);
         combo.setFont(new Font("Dialog", Font.BOLD, 14));
         combo.setBorder(BorderFactory.createLineBorder(colors.secondryColor, 1));
@@ -56,19 +58,21 @@ public class EventsGUI extends Form {
 
 
         DefaultListModel<Event> model = new DefaultListModel<>();
-        model.clear();
         for (Event event : EventSystem.events) {
             model.addElement(event);
         }
+
         JList<Event> eventList = new JList<>();
         eventList.setModel(model);
-        JScrollPane scroll = new JScrollPane(eventList);
+
+        JScrollPane scroll = new JScrollPane();
+        scroll.setViewportView(eventList);
+
         scroll.setBounds(10, 110, 500, 330);
         combo.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 int selected = combo.getSelectedIndex();
-
                 EventSystem.sortEvent(selected == 0);
                 model.clear();
                 for (Event event : EventSystem.events) {
@@ -77,6 +81,7 @@ public class EventsGUI extends Form {
 
             }
         });
+
         eventList.setForeground(colors.textColor);
         eventList.setBackground(colors.primaryColor);
         eventList.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -201,8 +206,8 @@ public class EventsGUI extends Form {
         eventList.addListSelectionListener(e -> {
 
             Event selected = eventList.getSelectedValue();
-            if (selected == null) return; // i keep getting nullpointerexception error, had to research it, and i
-            // found out that when nothing is selected it gives a null value which calls for skipping.
+            if (selected == null) return;
+
             try {
                 EventSystem.updateEventsFile();
             } catch (IOException ex) {

@@ -31,7 +31,7 @@ public class LoginGUI extends Form {
         usernameField.setForeground(colors.textColor);
         usernameField.setBackground(colors.secondryColor);
         usernameField.setFont(new Font("Dialog", Font.PLAIN, 24));
-        usernameField.setMargin(new Insets(5, 5, 5, 5)); // adds margin to the text in the text field
+        usernameField.setMargin(new Insets(5, 5, 5, 5));
 
         add(usernameField);
         add(usernameLabel);
@@ -41,7 +41,7 @@ public class LoginGUI extends Form {
         passwordLabel.setForeground(colors.textColor);
         passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
-        JTextField passwordField = new JTextField();
+        JPasswordField passwordField = new JPasswordField();
         passwordField.setBounds(30, 335, 450, 55);
         passwordField.setForeground(colors.textColor);
         passwordField.setBackground(colors.secondryColor);
@@ -85,8 +85,9 @@ public class LoginGUI extends Form {
             public void actionPerformed(ActionEvent e) {
                 emptyUsername.setVisible(false);
                 emptyPassword.setVisible(false);
+                wrongCred.setVisible(false);
                 String username = usernameField.getText();
-                String password = passwordField.getText();
+                String password = new String(passwordField.getPassword());
 
                 if (username.isEmpty()) {
                     emptyUsername.setVisible(true);
@@ -100,7 +101,7 @@ public class LoginGUI extends Form {
 
                 for (User user : EventSystem.users) {
                     exists = false;
-                    if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                    if (username.equalsIgnoreCase(user.getUsername()) && password.equals(user.getPassword())) {
                         exists = true;
                         EventSystem.currentUser = EventSystem.users.indexOf(user);
                         LoginGUI.this.dispose();

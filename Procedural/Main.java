@@ -449,14 +449,14 @@ public class Main {
             }
         }
         if (file.exists()) {
-            Scanner fileScanner = new Scanner(file); // reads the file rather than the keyboard... noice
+            Scanner fileScanner = new Scanner(file);
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine().trim();
                 if (line.isEmpty() || line.contains("username")) {
                     continue;
                 }
 
-                String[] parts = line.split(":"); // test:1234 -> ["test","1234"]
+                String[] parts = line.split(":");
                 String username = parts[0];
                 String password = parts[1];
 
