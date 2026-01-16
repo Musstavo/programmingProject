@@ -22,7 +22,7 @@ public class EventsGUI extends Form {
 
     public void GUIitems() {
         JLabel back = new JLabel();
-        back.setForeground(colors.textColor);
+        back.setForeground(colors.TEXT_COLOR);
         back.setFont(new Font("Dialog", Font.PLAIN, 12));
         back.setBounds(10, 8, 200, 20);
         back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -38,22 +38,22 @@ public class EventsGUI extends Form {
         });
 
         JLabel eventLabel = new JLabel("Events");
-        eventLabel.setForeground(colors.textColor);
+        eventLabel.setForeground(colors.TEXT_COLOR);
         eventLabel.setFont(new Font("Dialog", Font.BOLD, 40));
         eventLabel.setBounds(10, 35, 240, 55);
         add(eventLabel);
 
         JComboBox<String> combo = new JComboBox<>();
-        combo.addItem("Newest First");
-        combo.addItem("Oldest First");
+        combo.addItem("Ascending");
+        combo.addItem("Descending");
 
         combo.setBounds(340, 48, 165, 30);
         combo.setSelectedIndex(1);
         combo.setFocusable(false);
         combo.setFont(new Font("Dialog", Font.BOLD, 14));
-        combo.setBorder(BorderFactory.createLineBorder(colors.secondryColor, 1));
-        combo.setBackground(colors.secondryColor);
-        combo.setForeground(colors.textColor);
+        combo.setBorder(BorderFactory.createLineBorder(colors.SECONARY_COLOR, 1));
+        combo.setBackground(colors.SECONARY_COLOR);
+        combo.setForeground(colors.TEXT_COLOR);
         add(combo);
 
 
@@ -82,22 +82,22 @@ public class EventsGUI extends Form {
             }
         });
 
-        eventList.setForeground(colors.textColor);
-        eventList.setBackground(colors.primaryColor);
+        eventList.setForeground(colors.TEXT_COLOR);
+        eventList.setBackground(colors.PRIMARY_COLOR);
         eventList.setFont(new Font("Dialog", Font.BOLD, 20));
         eventList.setFocusable(false);
 
-        scroll.setBorder(BorderFactory.createLineBorder(colors.textColor, 1));
+        scroll.setBorder(BorderFactory.createLineBorder(colors.TEXT_COLOR, 1));
         scroll.setBounds(10, 110, 485, 330);
         scroll.getVerticalScrollBar().setUnitIncrement(16);
-        scroll.getVerticalScrollBar().setBackground(colors.primaryColor);
+        scroll.getVerticalScrollBar().setBackground(colors.PRIMARY_COLOR);
 
         add(scroll);
 
         JPanel details = new JPanel();
         details.setBounds(10, 460, 485, 170);
-        details.setBorder(BorderFactory.createLineBorder(colors.textColor, 1));
-        details.setBackground(colors.primaryColor);
+        details.setBorder(BorderFactory.createLineBorder(colors.TEXT_COLOR, 1));
+        details.setBackground(colors.PRIMARY_COLOR);
         details.setLayout(null);
         add(details);
 
@@ -129,7 +129,7 @@ public class EventsGUI extends Form {
         JButton registerEvent = new JButton("Register");
         registerEvent.setFont(new Font("Dialog", Font.BOLD, 18));
         registerEvent.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        registerEvent.setBackground(colors.textColor);
+        registerEvent.setBackground(colors.TEXT_COLOR);
         registerEvent.setBounds(304, 10, 170, 40);
         registerEvent.setVisible(false);
         details.add(registerEvent);
@@ -137,7 +137,7 @@ public class EventsGUI extends Form {
         JButton addEvent = new JButton("Add Event");
         addEvent.setFont(new Font("Dialog", Font.BOLD, 18));
         addEvent.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        addEvent.setBackground(colors.textColor);
+        addEvent.setBackground(colors.TEXT_COLOR);
         addEvent.setBounds(304, 50, 170, 40);
         addEvent.setVisible(false);
         details.add(addEvent);
@@ -233,23 +233,23 @@ public class EventsGUI extends Form {
             addEvent.setVisible(true);
 
             nameValueLabel.setText("Name: " + selected.getEvent_name());
-            nameValueLabel.setForeground(colors.textColor);
+            nameValueLabel.setForeground(colors.TEXT_COLOR);
             nameValueLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 
             venueValueLabel.setText("Venue: " + selected.getVenue());
-            venueValueLabel.setForeground(colors.textColor);
+            venueValueLabel.setForeground(colors.TEXT_COLOR);
             venueValueLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 
             dateValueLabel.setText("Date: " + selected.getYear() + "-" + selected.getMonth() + "-" + selected.getDay());
-            dateValueLabel.setForeground(colors.textColor);
+            dateValueLabel.setForeground(colors.TEXT_COLOR);
             dateValueLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 
             lengthValueLabel.setText("Length: " + selected.getLength());
-            lengthValueLabel.setForeground(colors.textColor);
+            lengthValueLabel.setForeground(colors.TEXT_COLOR);
             lengthValueLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 
             participantValueLabel.setText("Participants: " + selected.getParticipants() + "/" + selected.getCapacity());
-            participantValueLabel.setForeground(colors.textColor);
+            participantValueLabel.setForeground(colors.TEXT_COLOR);
             participantValueLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 
             FULL.setVisible(false);

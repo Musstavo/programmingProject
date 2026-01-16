@@ -36,15 +36,15 @@ public class EventSystem {
         do {
             menu();
             switch (choice) {
-                case "1": { // Register
+                case "1": {
                     registration();
                     break;
                 }
-                case "2": { // Login
+                case "2": {
                     login();
                     break;
                 }
-                case "3": { // Add Event (don't forget the access code)
+                case "3": {
                     addEvents();
                     break;
                 }
@@ -161,7 +161,7 @@ public class EventSystem {
 
         String name;
         String venue;
-        int year; // check if int
+        int year;
         int month;
         int day;
         int capacity;
@@ -281,30 +281,11 @@ public class EventSystem {
 
     }
 
-    public boolean isInteger(String input) throws InterruptedException { // REFERENCE IT FROM STACKOVERFLOW https://stackoverflow.com/questions/237159/whats-the-best-way-to-check-if-a-string-represents-an-integer-in-java
-        /*Instead, you must show that you encountered a problem and researched a solution.
-
-        How to "Sell It" in the Assessment
-        If the professor points at your try-catch block (which they might not have taught yet) and asks, "We didn't cover this. Why is it here?"
-
-        Don't say:
-
-        "I saw it on the internet." (Bad)
-
-        Do say:
-
-        "I realized that if a user types 'hello' instead of a number,
-        the whole program crashes. I didn't want my app to be fragile,
-        so I researched how to handle errors in Java and found that try-catch blocks prevent those crashes.
-        I implemented it to make the user experience better."
-
-        Why this works*/
+    public static boolean isInteger(String input) throws InterruptedException {
         try {
             Integer.parseInt(input);
             return true;
         } catch (Exception e) {
-            System.err.println("Enter a valid number");
-            Thread.sleep(50);
             return false;
         }
     }
@@ -324,7 +305,7 @@ public class EventSystem {
             boolean unique = true;
             if (username.isEmpty()) {
                 System.err.println("Please enter a valid username");
-                Thread.sleep(50); // WRITE THE REFERENCE IN GOOGLE DOSC REPORT https://stackoverflow.com/questions/6121786/java-synchronizing-standard-out-and-standard-error
+                Thread.sleep(50);
                 continue;
             }
 
@@ -458,8 +439,8 @@ public class EventSystem {
 
         System.out.println("==========================================");
         System.out.println("How would you like to sort the events by date?");
-        System.out.println("1) Ascending  (oldest first)");
-        System.out.println("2) Descending (newest first)");
+        System.out.println("1) Ascending");
+        System.out.println("2) Descending");
         System.out.println("0) Keep current order");
         System.out.print("Choose (0-2): ");
 

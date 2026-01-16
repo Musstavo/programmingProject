@@ -36,15 +36,15 @@ public class EventSystem {
         do {
             menu();
             switch (choice) {
-                case "1": { // Register
+                case "1": {
                     registration();
                     break;
                 }
-                case "2": { // Login
+                case "2": {
                     login();
                     break;
                 }
-                case "3": { // Add Event (don't forget the access code)
+                case "3": {
                     addEvents();
                     break;
                 }
@@ -104,14 +104,13 @@ public class EventSystem {
         fw.close();
     }
 
-    public void writeToFile(User user) throws IOException {
-        appendToFile("src/OOP/users.txt", "username:password", user);
-    }
-
     public void writeToFile(Event event) throws IOException {
         appendToFile("src/OOP/events.txt", "Name : Year/Month/Day : Venue : Capacity : Length : Participants",
                 event);
+    }
 
+    public void writeToFile(User user) throws IOException {
+        appendToFile("src/OOP/users.txt", "username:password", user);
     }
 
     public void writeToFile(UserEventRegistration userEventRegistration) throws IOException {
@@ -161,7 +160,7 @@ public class EventSystem {
 
         String name;
         String venue;
-        int year; // check if int
+        int year;
         int month;
         int day;
         int capacity;
@@ -277,28 +276,9 @@ public class EventSystem {
         Event newEvent = new Event(name, year, month, day, venue, capacity, length, initial_participants);
         events.add(newEvent);
         writeToFile(newEvent);
-
-
     }
 
-    public boolean isInteger(String input) throws InterruptedException { // REFERENCE IT FROM STACKOVERFLOW https://stackoverflow.com/questions/237159/whats-the-best-way-to-check-if-a-string-represents-an-integer-in-java
-        /*Instead, you must show that you encountered a problem and researched a solution.
-
-        How to "Sell It" in the Assessment
-        If the professor points at your try-catch block (which they might not have taught yet) and asks, "We didn't cover this. Why is it here?"
-
-        Don't say:
-
-        "I saw it on the internet." (Bad)
-
-        Do say:
-
-        "I realized that if a user types 'hello' instead of a number,
-        the whole program crashes. I didn't want my app to be fragile,
-        so I researched how to handle errors in Java and found that try-catch blocks prevent those crashes.
-        I implemented it to make the user experience better."
-
-        Why this works*/
+    public boolean isInteger(String input) throws InterruptedException {
         try {
             Integer.parseInt(input);
             return true;
@@ -324,7 +304,7 @@ public class EventSystem {
             boolean unique = true;
             if (username.isEmpty()) {
                 System.err.println("Please enter a valid username");
-                Thread.sleep(50); // WRITE THE REFERENCE IN GOOGLE DOSC REPORT https://stackoverflow.com/questions/6121786/java-synchronizing-standard-out-and-standard-error
+                Thread.sleep(50);
                 continue;
             }
 
@@ -417,6 +397,7 @@ public class EventSystem {
                         System.out.println("Venue: " + event.getVenue());
                         System.out.println("Capacity: " + event.getCapacity());
                         System.out.println("Length: " + event.getLength());
+                        System.out.println("Participants: " + event.getParticipants());
                         System.out.println("==========================================");
                         break;
                     }
@@ -440,7 +421,6 @@ public class EventSystem {
         }
     }
 
-    // Helper method to overwrite the events.txt file with current data
     public void updateEventsFile() throws IOException {
         File file = new File("src/OOP/events.txt");
         FileWriter fw = new FileWriter(file, false);
@@ -459,8 +439,8 @@ public class EventSystem {
 
         System.out.println("==========================================");
         System.out.println("How would you like to sort the events by date?");
-        System.out.println("1) Ascending  (oldest first)");
-        System.out.println("2) Descending (newest first)");
+        System.out.println("1) Ascending");
+        System.out.println("2) Descending");
         System.out.println("0) Keep current order");
         System.out.print("Choose (0-2): ");
 
@@ -505,6 +485,11 @@ public class EventSystem {
 
         if (register.equals("y")) {
             int currentEvent = choice - 1;
+            if (events.get(currentEvent).getParticipants() >= events.get(currentEvent).getCapacity()) {
+                System.err.println("This Event is Full.");
+                Thread.sleep(50);
+                return;
+            }
             String nameOfEvent = events.get(currentEvent).getEvent_name();
             for (UserEventRegistration userEventRegistration : user_event) {
                 if (userEventRegistration.getUserIndex() == currentUser && userEventRegistration.getEventName().equals(nameOfEvent)) {
@@ -513,16 +498,13 @@ public class EventSystem {
                     return;
                 }
             }
-            // hsa shoof, the only reason for writing these two lines is to save
-            // the username and event in memory, so when it's still on the same run, it can actually detects the
-            // duplications without having to load the file by going through the second run.. khalas inta fahim
 
             events.get(currentEvent).setParticipants(events.get(currentEvent).getParticipants() + 1);
             updateEventsFile();
             UserEventRegistration newUserEventRegistration = new UserEventRegistration(currentUser, nameOfEvent);
             user_event.add(newUserEventRegistration);
             writeToFile(newUserEventRegistration);
-            
+
         }
     }
 }

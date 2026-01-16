@@ -1,4 +1,0 @@
-username:password
-test:1234
-test1:12345
-123:back

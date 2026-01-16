@@ -16,20 +16,20 @@ public class LoginGUI extends Form {
     private void GUIitems() {
         JLabel loginLabel = new JLabel("Login");
         loginLabel.setBounds(0, 25, 520, 100);
-        loginLabel.setForeground(colors.textColor);
+        loginLabel.setForeground(colors.TEXT_COLOR);
         loginLabel.setFont(new Font("Dialog", Font.BOLD, 40));
         loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(loginLabel);
 
         JLabel usernameLabel = new JLabel("Username: ");
         usernameLabel.setBounds(30, 150, 400, 25);
-        usernameLabel.setForeground(colors.textColor);
+        usernameLabel.setForeground(colors.TEXT_COLOR);
         usernameLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
         JTextField usernameField = new JTextField();
         usernameField.setBounds(30, 185, 450, 55);
-        usernameField.setForeground(colors.textColor);
-        usernameField.setBackground(colors.secondryColor);
+        usernameField.setForeground(colors.TEXT_COLOR);
+        usernameField.setBackground(colors.SECONARY_COLOR);
         usernameField.setFont(new Font("Dialog", Font.PLAIN, 24));
         usernameField.setMargin(new Insets(5, 5, 5, 5));
 
@@ -38,13 +38,13 @@ public class LoginGUI extends Form {
 
         JLabel passwordLabel = new JLabel("Password: ");
         passwordLabel.setBounds(30, 300, 400, 25);
-        passwordLabel.setForeground(colors.textColor);
+        passwordLabel.setForeground(colors.TEXT_COLOR);
         passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
         JPasswordField passwordField = new JPasswordField();
         passwordField.setBounds(30, 335, 450, 55);
-        passwordField.setForeground(colors.textColor);
-        passwordField.setBackground(colors.secondryColor);
+        passwordField.setForeground(colors.TEXT_COLOR);
+        passwordField.setBackground(colors.SECONARY_COLOR);
         passwordField.setFont(new Font("Dialog", Font.PLAIN, 24));
         passwordField.setMargin(new Insets(5, 5, 5, 5));
 
@@ -75,7 +75,7 @@ public class LoginGUI extends Form {
         JButton loginButton = new JButton("Login");
         loginButton.setFont(new Font("Dialog", Font.BOLD, 18));
         loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        loginButton.setBackground(colors.textColor);
+        loginButton.setBackground(colors.TEXT_COLOR);
         loginButton.setBounds(125, 520, 250, 50);
         add(loginButton);
 
@@ -120,7 +120,7 @@ public class LoginGUI extends Form {
         registerLabel.setText("<html><u>New user? Create new account here</u></html>");
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         registerLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        registerLabel.setForeground(colors.textColor);
+        registerLabel.setForeground(colors.TEXT_COLOR);
 
         registerLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {

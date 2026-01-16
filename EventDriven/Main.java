@@ -1,8 +1,7 @@
 package EventDriven;
 
 import EventDriven.OOP.EventSystem;
-import EventDriven.guis.AddEvent;
-import EventDriven.guis.EventsGUI;
+
 import EventDriven.guis.LoginGUI;
 
 import java.io.FileNotFoundException;

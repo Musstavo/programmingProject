@@ -25,7 +25,7 @@ public class UserEventRegistration extends FileRecord {
     public String getEventName() {
         return eventName;
     }
-
+    
     public String writeToFile() {
         return userIndex + "," + eventName;
     }

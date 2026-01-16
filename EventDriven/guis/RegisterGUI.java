@@ -23,35 +23,35 @@ public class RegisterGUI extends Form {
     public void GUIitems() {
         JLabel registerLabel = new JLabel("Register");
         registerLabel.setBounds(0, 25, 520, 100);
-        registerLabel.setForeground(colors.textColor);
+        registerLabel.setForeground(colors.TEXT_COLOR);
         registerLabel.setFont(new Font("Dialog", Font.BOLD, 40));
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(registerLabel);
 
         JLabel usernameLabel = new JLabel("Username: ");
         usernameLabel.setBounds(30, 150, 400, 25);
-        usernameLabel.setForeground(colors.textColor);
+        usernameLabel.setForeground(colors.TEXT_COLOR);
         usernameLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
         JTextField usernameField = new JTextField();
         usernameField.setBounds(30, 185, 450, 55);
-        usernameField.setForeground(colors.textColor);
-        usernameField.setBackground(colors.secondryColor);
+        usernameField.setForeground(colors.TEXT_COLOR);
+        usernameField.setBackground(colors.SECONARY_COLOR);
         usernameField.setFont(new Font("Dialog", Font.PLAIN, 24));
-        usernameField.setMargin(new Insets(5, 5, 5, 5)); // adds margin to the text in the text field
+        usernameField.setMargin(new Insets(5, 5, 5, 5));
 
         add(usernameField);
         add(usernameLabel);
 
         JLabel passwordLabel = new JLabel("Password: ");
         passwordLabel.setBounds(30, 255, 400, 25);
-        passwordLabel.setForeground(colors.textColor);
+        passwordLabel.setForeground(colors.TEXT_COLOR);
         passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
         JPasswordField passwordField = new JPasswordField();
         passwordField.setBounds(30, 290, 450, 55);
-        passwordField.setForeground(colors.textColor);
-        passwordField.setBackground(colors.secondryColor);
+        passwordField.setForeground(colors.TEXT_COLOR);
+        passwordField.setBackground(colors.SECONARY_COLOR);
         passwordField.setFont(new Font("Dialog", Font.PLAIN, 24));
         passwordField.setMargin(new Insets(5, 5, 5, 5));
 
@@ -60,13 +60,13 @@ public class RegisterGUI extends Form {
 
         JLabel rePasswordLabel = new JLabel("Re-enter Password: ");
         rePasswordLabel.setBounds(30, 365, 400, 25);
-        rePasswordLabel.setForeground(colors.textColor);
+        rePasswordLabel.setForeground(colors.TEXT_COLOR);
         rePasswordLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
         JPasswordField rePasswordField = new JPasswordField();
         rePasswordField.setBounds(30, 400, 450, 55);
-        rePasswordField.setForeground(colors.textColor);
-        rePasswordField.setBackground(colors.secondryColor);
+        rePasswordField.setForeground(colors.TEXT_COLOR);
+        rePasswordField.setBackground(colors.SECONARY_COLOR);
         rePasswordField.setFont(new Font("Dialog", Font.PLAIN, 24));
         rePasswordField.setMargin(new Insets(5, 5, 5, 5));
 
@@ -76,7 +76,7 @@ public class RegisterGUI extends Form {
         JButton registerButton = new JButton("Register");
         registerButton.setFont(new Font("Dialog", Font.BOLD, 18));
         registerButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        registerButton.setBackground(colors.textColor);
+        registerButton.setBackground(colors.TEXT_COLOR);
         registerButton.setBounds(125, 520, 250, 50);
 
 
@@ -125,7 +125,7 @@ public class RegisterGUI extends Form {
                 emptyPassword.setVisible(false);
 
                 String username = usernameField.getText();
-                String password = new String(passwordField.getPassword()); // the ide told me to put new wallahi
+                String password = new String(passwordField.getPassword());
                 String rePassword = new String(rePasswordField.getPassword());
 
                 if (username.isEmpty()) {
@@ -167,7 +167,7 @@ public class RegisterGUI extends Form {
         loginLabel.setText("<html><u>Have an account? Login here</u></html>");
         loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
         loginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        loginLabel.setForeground(colors.textColor);
+        loginLabel.setForeground(colors.TEXT_COLOR);
 
         loginLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {

@@ -29,10 +29,7 @@ public class User extends FileRecord {
         return username + ":" + password;
     }
 
-    public static User readFromFile(String line) { // ya allah...
-        // we used static because we call it from the class name rather than an object
-        // User means we're essentially returning an object rather than a int or string etc..
-        // yea.. SIUUUU
+    public static User readFromFile(String line) {
         String[] parts = line.split(":");
         String username = parts[0];
         String password = parts[1];

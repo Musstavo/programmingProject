@@ -18,6 +18,6 @@ public class Form extends JFrame {
 
         setResizable(false);
 
-        getContentPane().setBackground(colors.primaryColor);
+        getContentPane().setBackground(colors.PRIMARY_COLOR);
     }
 }

@@ -1,3 +1,23 @@
 Name : Year/Month/Day : Venue : Capacity : Length : Participants 
+GCPC : 2026/1/15 : TechHub : 150 : 5 : 47
+Winter Dash : 2026/2/2 : City Arena : 1200 : 2 : 800
+CodeSprint : 2026/2/20 : HTU : 200 : 8 : 120
+Design Expo : 2026/3/10 : Grand Hall : 500 : 6 : 310
+CyberSec Summit : 2026/3/25 : HTU : 400 : 4 : 220
+Spring Hack : 2026/4/5 : Innovation Lab : 100 : 24 : 85
+Data Con : 2026/4/18 : Marriott : 600 : 7 : 450
+RoboWar : 2026/5/12 : Tech Arena : 350 : 5 : 40
+Gaming Gala : 2026/5/30 : HTU : 500 : 12 : 480
+AI Workshop (TO TEST FULL) : 2026/6/8 : Digital Room : 80 : 3 : 80
+Summer Jam : 2026/7/14 : Open Field : 2000 : 10 : 1800
+Startup Pitch : 2026/7/22 : HTU : 150 : 4 : 12
+Cloud Fest : 2026/8/3 : Sky Lounge : 300 : 6 : 211
+Dev Meetup : 2026/8/19 : Cafe Tech : 50 : 2 : 45
+Logic Bowl : 2026/9/1 : HTU : 100 : 3 : 60
 JCPC : 2026/9/12 : HTU : 300 : 3 : 0
-Test : 2026/12/1 : asldfjasfd : 2000 : 1 : 0
+Physics Fair : 2026/10/11 : Science Ctr : 450 : 5 : 320
+App Build : 2026/10/29 : HTU : 250 : 48 : 190
+Web Days : 2026/11/15 : Tower B : 400 : 8 : 315
+test : 2026/12/2 : ew : 2 : 3 : 1
+InnoVerse : 2026/12/5 : HTU : 500 : 6 : 410
+Final Pixel : 2026/12/28 : Cinema 4 : 200 : 3 : 187
