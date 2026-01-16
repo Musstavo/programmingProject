@@ -149,6 +149,19 @@ public class EventsGUI extends Form {
         successfulRegister.setVisible(false);
         add(successfulRegister);
 
+        JButton viewRegistered = new JButton("My Registrations");
+        viewRegistered.setFont(new Font("Dialog", Font.BOLD, 14));
+        viewRegistered.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        viewRegistered.setBackground(colors.TEXT_COLOR);
+        viewRegistered.setBounds(10, 85, 170, 25);
+        add(viewRegistered);
+
+        viewRegistered.addActionListener(e -> {
+            EventsGUI.this.dispose();
+            RegisteredEventsGUI regGUI = new RegisteredEventsGUI();
+            regGUI.setVisible(true);
+        });
+        
         JLabel alreadyRegistered = new JLabel("You are already regisitered to this event.");
         alreadyRegistered.setBounds(85, 423, 500, 50);
         alreadyRegistered.setForeground(Color.red);
